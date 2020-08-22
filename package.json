@@ -1,0 +1,24 @@
+{
+  "name": "workers2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "getData.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiviraj/jobsAlrtWorker2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shiviraj/jobsAlrtWorker2/issues"
+  },
+  "homepage": "https://github.com/shiviraj/jobsAlrtWorker2#readme",
+  "dependencies": {
+    "html2json": "^1.0.2",
+    "mongoose": "^5.10.0"
+  }
+}
