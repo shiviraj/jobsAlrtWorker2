@@ -1,10 +1,10 @@
-const findPosts = (data, key, value) => {
+const findFromTree = (data, anonymous) => {
   const queue = [data];
   const result = [];
   const visited = [];
   while (queue.length) {
     if (!visited.includes(data) && data.child) {
-      const posts = data.child.filter((item) => item[key] === value);
+      const posts = data.child.filter(anonymous);
       posts.length && result.push(...posts);
       queue.push(...data.child);
       visited.push(data);
@@ -14,4 +14,4 @@ const findPosts = (data, key, value) => {
   return result;
 };
 
-module.exports = findPosts;
+module.exports = { findFromTree };
