@@ -49,12 +49,13 @@ const verifyAlrt = async ({ source, title, url }) => {
   await postRequest(slackUrl, message);
 };
 
-const failureAlrt = async ({ url }) => {
+const failureAlrt = async ({ url, name }) => {
   const message = {
     blocks: [
+      { type: 'section', text: { type: 'mrkdwn', text: `*${name}*` } },
       {
         type: 'section',
-        text: { type: 'mrkdwn', text: `*Need to upload Details*` },
+        text: { type: 'mrkdwn', text: `_Need to upload Details_` },
       },
     ],
     attachments: [
