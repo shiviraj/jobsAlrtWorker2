@@ -4,6 +4,8 @@ const { getHeadRows, getRows, snakeCase } = require('./utils');
 const findTag = (tag, item) => item.tag === tag;
 
 const getGeneralDetails = (data) => {
+  const findGeneral = (item) => item.attr && item.attr.id === 'post-title1';
+  data = data.find(findGeneral);
   const html = getRows(data);
   return html.reduce((context, post) => {
     const key = post[0].trim();
@@ -46,15 +48,28 @@ const makeList = (list) => {
   }, []);
 };
 
+const createArray = (list, itemName) => {
+  const keys = Object.keys(list);
+  const key = keys.find((keyName) => keyName.includes(itemName));
+  const items = (list[key] && list[key].body) || [];
+  return makeList(items);
+};
+
 const modifyDetails = (list) => {
   list.important_dates = list.important_dates.body.reduce((dates, date) => {
     const key = snakeCase(date[0]);
     dates[key] = date[1].trim();
     return dates;
   }, {});
-  list.selection_process = makeList(list.selection_process.body);
-  list.how_to_apply = makeList(list.how_to_apply.body);
+  list.selection_process = createArray(list, 'selection_process');
+  list.how_to_apply = createArray(list, 'how_to_apply');
   return list;
+};
+
+const getTitle = (data) => {
+  const [header] = findFromTree(data, findByClass.bind(null, 'entry-header'));
+  const [titleDiv] = findFromTree(header, (item) => item.tag === 'h1');
+  return titleDiv.child[0].text.replace(/  /g, ' ').trim();
 };
 
 const getDetails = (data) => {
@@ -62,11 +77,11 @@ const getDetails = (data) => {
   const list = tables.child.filter((item) => {
     return item.tag === 'div' || item.tag === 'h2';
   });
-  const general = getGeneralDetails(list[0]);
+  const general = getGeneralDetails(list);
   const groupedDetails = groupDetails(list);
   const details = parseDetails(groupedDetails);
   const usefulDetails = modifyDetails(details);
   return Object.assign(usefulDetails, { general });
 };
 
-module.exports = getDetails;
+module.exports = { getDetails, getTitle };

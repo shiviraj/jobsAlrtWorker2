@@ -4,7 +4,8 @@
   "description": "",
   "main": "getData.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "env-cmd -f ./config/dev.env node --trace-warnings getData.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,10 @@
   "homepage": "https://github.com/shiviraj/jobsAlrtWorker2#readme",
   "dependencies": {
     "html2json": "^1.0.2",
+    "moment": "^2.27.0",
     "mongoose": "^5.10.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
   }
 }

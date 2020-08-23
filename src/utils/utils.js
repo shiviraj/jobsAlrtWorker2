@@ -2,7 +2,8 @@ const { json2html } = require('html2json');
 
 const removeComments = (html) => html.replace(/\s<!--[^>]*-->/g, '');
 
-const snakeCase = (text) => text.trim().replace(/ /g, '_').toLowerCase();
+const snakeCase = (text) =>
+  text.trim().replace(/ /g, '_').replace(/\./g, '').toLowerCase();
 
 const isValidRow = (row) => row.find((item) => item.trim());
 

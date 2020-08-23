@@ -9,6 +9,4 @@ const ListSchema = new mongoose.Schema({
   ],
 });
 
-const ItemToUpdate = mongoose.model('ItemToUpdate', ListSchema);
-
-module.exports = { ItemToUpdate };
+module.exports = mongoose.model('ItemToUpdate', ListSchema);
