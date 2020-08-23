@@ -12,6 +12,7 @@ const PostSchema = new mongoose.Schema({
   others: { type: Object },
   title: { type: String, required: true, trim: true },
   url: { type: String, required: true, trim: true },
+  source: { type: String, required: true, trim: true },
 });
 
 module.exports = mongoose.model('Post', PostSchema);

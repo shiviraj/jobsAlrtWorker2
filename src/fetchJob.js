@@ -8,18 +8,27 @@ const fetchJob = async () => {
   return job;
 };
 
-const updateDB = async (details, { url }) => {
-  Object.assign(details, { url });
+const createUrl = (text) => {
+  return text
+    .replace(/[\/\*\.]/g, '')
+    .replace(/ /g, '-')
+    .toLowerCase();
+};
 
-  const savedJob = await Post.findOne({ url });
+const updateDB = async (details, { url }) => {
+  Object.assign(details, { source: url });
+
+  const savedJob = await Post.findOne({ source: url });
   if (savedJob) {
     details.modified_at = new Date();
     Object.assign(savedJob, details);
     return await savedJob.save();
   }
 
+  details.url = createUrl(details.title);
+
   const post = new Post(details);
-  await post.save();
+  return await post.save();
 };
 
 module.exports = { fetchJob, updateDB };
