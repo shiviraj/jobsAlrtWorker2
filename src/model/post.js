@@ -13,6 +13,7 @@ const PostSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   url: { type: String, required: true, trim: true },
   source: { type: String, required: true, trim: true },
+  status: { type: String, required: true, default: 'drafted' },
 });
 
 module.exports = mongoose.model('Post', PostSchema);
