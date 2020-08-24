@@ -4,7 +4,8 @@ const fetchDetails = require('./src/fetchAllDetails');
 const { fetchJob, updateDB } = require('./src/fetchJob');
 const { verifyAlrt, failureAlrt } = require('./src/alrt');
 
-const currentTime = () => moment().format('MMM DD, YYYY hh:mm:ss A');
+const currentTime = () =>
+  moment().utcOffset('Asia/Kolkata').format('MMM DD, YYYY hh:mm:ss A');
 
 let error = 0;
 
