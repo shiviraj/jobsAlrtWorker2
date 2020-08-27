@@ -4,7 +4,9 @@ const { removeComments } = require('./utils/utils');
 const getLinks = require('./utils/links');
 const { getTitle, getDetails } = require('./utils/details');
 
-const fetchDetails = async function (url) {
+const fetchDetails = async function (
+  url = 'https://www.jobsarkari.com/recruitment/bpsc-physics-professor-in-engineering-colleges-s/'
+) {
   let data = await fetchUrl(url);
   data = html2json(removeComments(data));
   const links = getLinks(data);

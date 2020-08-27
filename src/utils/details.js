@@ -1,5 +1,5 @@
 const { findFromTree } = require('./tree');
-const { getHeadRows, getRows, snakeCase } = require('./utils');
+const { getHeadRows, getRows, snakeCase, makeKeysUnique } = require('./utils');
 
 const findTag = (tag, item) => item.tag === tag;
 
@@ -63,6 +63,7 @@ const modifyDetails = (list) => {
   }, {});
   list.selection_process = createArray(list, 'selection_process');
   list.how_to_apply = createArray(list, 'how_to_apply');
+  makeKeysUnique(list);
   return list;
 };
 

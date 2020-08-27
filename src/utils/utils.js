@@ -32,4 +32,30 @@ const getHeadRows = (data) => {
   return createRows(html);
 };
 
-module.exports = { removeComments, snakeCase, getRows, getHeadRows };
+const keys = [
+  'how_to_apply',
+  'selection_process',
+  'important_links',
+  'important_dates',
+  'application_fee',
+  'age_limit_details',
+];
+
+const makeKeysUnique = (list) => {
+  const listKeys = Object.keys(list);
+  keys.forEach((keyName) => {
+    const key = listKeys.find((item) => item.includes(keyName));
+    if (key) {
+      list[keyName] = list[key];
+      delete list[key];
+    }
+  });
+};
+
+module.exports = {
+  removeComments,
+  snakeCase,
+  getRows,
+  getHeadRows,
+  makeKeysUnique,
+};
