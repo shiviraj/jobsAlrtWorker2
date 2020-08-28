@@ -4,7 +4,6 @@ require('./getData');
 const app = express();
 
 app.get('/', (req, res) => {
-  require('./getData');
   res.send({ running: true });
 });
 

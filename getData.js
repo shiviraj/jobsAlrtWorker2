@@ -1,3 +1,4 @@
+const https = require('https');
 const moment = require('moment');
 require('./src/db/connect.js');
 const fetchDetails = require('./src/fetchAllDetails');
@@ -6,6 +7,8 @@ const { verifyAlrt, failureAlrt } = require('./src/alrt');
 
 const currentTime = () =>
   moment().utcOffset('Asia/Kolkata').format('MMM DD, YYYY hh:mm:ss A');
+
+const wakeAnotherWorker = (url) => https.request(url).end();
 
 const main = async () => {
   const job = await fetchJob();
@@ -18,6 +21,7 @@ const main = async () => {
       console.log('updated\n\t', currentTime());
       return main();
     }
+    setTimeout(() => wakeAnotherWorker(process.env.ANOTHER_WORKER), 300000);
     setTimeout(main, 600000);
   } catch (e) {
     await failureAlrt(job);
