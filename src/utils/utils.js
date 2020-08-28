@@ -53,9 +53,12 @@ const makeKeysUnique = (list) => {
   });
 };
 
+const convertIntoDate = (date) => {
+  const dateInstance = moment(date, 'DD/MM/YYYY');
+  return dateInstance.isValid() ? dateInstance : date;
+};
+
 const createDateInstance = (list) => {
-  console.log('list =========>\n\n', list);
-  const convertIntoDate = (date) => moment(date, 'DD/MM/YYYY');
   list.general.last_date = convertIntoDate(list.general.last_date);
   Object.keys(list.important_dates).forEach((key) => {
     if (key.includes('advt_no')) return;
