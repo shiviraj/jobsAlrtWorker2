@@ -1,5 +1,6 @@
 const Queue = require('./model/queue');
 const Post = require('./model/post');
+const keys = require('./utils/keys');
 const { createDateInstance } = require('./utils/utils');
 
 const fetchJob = async () => {
@@ -15,26 +16,6 @@ const createUrl = (text) => {
     .replace(/ /g, '-')
     .toLowerCase();
 };
-
-const keys = [
-  '_id',
-  'how_to_apply',
-  'selection_process',
-  'status',
-  'created_at',
-  'modified_at',
-  'published_at',
-  'important_links',
-  'vacancy_details',
-  'application_fee',
-  'age_limit_details',
-  'title',
-  'important_dates',
-  'general',
-  'source',
-  'url',
-  'others',
-];
 
 const recreateObject = (postDetails) => {
   postDetails.others || (postDetails.others = {});

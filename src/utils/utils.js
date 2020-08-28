@@ -46,7 +46,7 @@ const makeKeysUnique = (list) => {
   const listKeys = Object.keys(list);
   keys.forEach((keyName) => {
     const key = listKeys.find((item) => item.includes(keyName));
-    if (key) {
+    if (key !== keyName) {
       list[keyName] = list[key];
       delete list[key];
     }
@@ -54,6 +54,7 @@ const makeKeysUnique = (list) => {
 };
 
 const createDateInstance = (list) => {
+  console.log('list =========>\n\n', list);
   const convertIntoDate = (date) => moment(date, 'DD/MM/YYYY');
   list.general.last_date = convertIntoDate(list.general.last_date);
   Object.keys(list.important_dates).forEach((key) => {

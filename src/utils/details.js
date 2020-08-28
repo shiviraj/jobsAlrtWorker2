@@ -82,6 +82,7 @@ const getDetails = (data) => {
   const groupedDetails = groupDetails(list);
   const details = parseDetails(groupedDetails);
   const usefulDetails = modifyDetails(details);
+  console.log(usefulDetails);
   return Object.assign(usefulDetails, { general });
 };
 

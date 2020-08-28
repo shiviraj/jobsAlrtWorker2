@@ -7,8 +7,6 @@ const { verifyAlrt, failureAlrt } = require('./src/alrt');
 const currentTime = () =>
   moment().utcOffset('Asia/Kolkata').format('MMM DD, YYYY hh:mm:ss A');
 
-let error = 0;
-
 const main = async () => {
   const job = await fetchJob();
   console.log(job || 'No job pending...', currentTime(), '\n');
