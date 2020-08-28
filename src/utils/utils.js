@@ -1,3 +1,4 @@
+const moment = require('moment');
 const { json2html } = require('html2json');
 
 const removeComments = (html) => html.replace(/\s<!--[^>]*-->/g, '');
@@ -52,10 +53,20 @@ const makeKeysUnique = (list) => {
   });
 };
 
+const createDateInstance = (list) => {
+  const convertIntoDate = (date) => moment(date, 'DD/MM/YYYY');
+  list.general.last_date = convertIntoDate(list.general.last_date);
+  Object.keys(list.important_dates).forEach((key) => {
+    if (key.includes('advt_no')) return;
+    list.important_dates[key] = convertIntoDate(list.important_dates[key]);
+  });
+};
+
 module.exports = {
   removeComments,
   snakeCase,
   getRows,
   getHeadRows,
   makeKeysUnique,
+  createDateInstance,
 };

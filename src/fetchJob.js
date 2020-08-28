@@ -1,5 +1,6 @@
 const Queue = require('./model/queue');
 const Post = require('./model/post');
+const { createDateInstance } = require('./utils/utils');
 
 const fetchJob = async () => {
   const queue = await Queue.findOne({});
@@ -45,6 +46,7 @@ const recreateObject = (postDetails) => {
 const updateDB = async (details, { url }) => {
   Object.assign(details, { source: url });
   recreateObject(details);
+  createDateInstance(details);
 
   const savedJob = await Post.findOne({ source: url });
   if (savedJob) {
