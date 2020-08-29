@@ -6,7 +6,7 @@ const { fetchJob, updateDB } = require('./src/fetchJob');
 const { verifyAlrt, failureAlrt } = require('./src/alrt');
 
 const currentTime = () =>
-  moment().utcOffset('Asia/Kolkata').format('MMM DD, YYYY hh:mm:ss A');
+  moment().utcOffset('+05:30').format('MMM DD, YYYY hh:mm:ss A');
 
 const wakeAnotherWorker = (url) => https.request(url).end();
 
@@ -21,7 +21,6 @@ const main = async () => {
       console.log('updated\n\t', currentTime());
       return main();
     }
-    setTimeout(() => wakeAnotherWorker(process.env.ANOTHER_WORKER), 300000);
     setTimeout(main, 600000);
   } catch (e) {
     await failureAlrt(job);
@@ -29,4 +28,5 @@ const main = async () => {
   }
 };
 
+setInterval(() => wakeAnotherWorker(process.env.ANOTHER_WORKER), 300000);
 main();
