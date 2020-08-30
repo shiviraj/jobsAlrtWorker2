@@ -1,4 +1,4 @@
-const findFromTree = (data, anonymous) => {
+const filterFromTree = (data, anonymous) => {
   const queue = [data];
   const result = [];
   const visited = [];
@@ -14,4 +14,4 @@ const findFromTree = (data, anonymous) => {
   return result;
 };
 
-module.exports = { findFromTree };
+module.exports = filterFromTree;

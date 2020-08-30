@@ -1,4 +1,4 @@
-const { findFromTree } = require('./tree');
+const findFromTree = require('./tree');
 const { snakeCase } = require('./utils');
 
 const findTag = (tag, item) => item.tag === tag;

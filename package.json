@@ -8,6 +8,10 @@
     "start": "node server.js",
     "dev": "env-cmd -f ./config/dev.env node --trace-warnings getData.js"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shiviraj/jobsAlrtWorker2.git"

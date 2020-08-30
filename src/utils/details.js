@@ -1,4 +1,4 @@
-const { findFromTree } = require('./tree');
+const filterFromTree = require('./tree');
 const { getHeadRows, getRows, snakeCase, makeKeysUnique } = require('./utils');
 
 const findTag = (tag, item) => item.tag === tag;
@@ -32,8 +32,8 @@ const groupDetails = (rows) => {
 
 const parseDetails = (list) => {
   for (let row in list) {
-    const [head] = findFromTree(list[row], findTag.bind(null, 'thead'));
-    const [body] = findFromTree(list[row], findTag.bind(null, 'tbody'));
+    const [head] = filterFromTree(list[row], findTag.bind(null, 'thead'));
+    const [body] = filterFromTree(list[row], findTag.bind(null, 'tbody'));
     console.log(JSON.stringify(head), '\n\n\n');
     const [tableHead] = getHeadRows(head);
     const tableBody = getRows(body);
@@ -69,13 +69,16 @@ const modifyDetails = (list) => {
 };
 
 const getTitle = (data) => {
-  const [header] = findFromTree(data, findByClass.bind(null, 'entry-header'));
-  const [titleDiv] = findFromTree(header, (item) => item.tag === 'h1');
+  const [header] = filterFromTree(data, findByClass.bind(null, 'entry-header'));
+  const [titleDiv] = filterFromTree(header, (item) => item.tag === 'h1');
   return titleDiv.child[0].text.replace(/  /g, ' ').trim();
 };
 
 const getDetails = (data) => {
-  const [tables] = findFromTree(data, findByClass.bind(null, 'entry-content'));
+  const [tables] = filterFromTree(
+    data,
+    findByClass.bind(null, 'entry-content')
+  );
   const list = tables.child.filter((item) => {
     return item.tag === 'div' || item.tag === 'h2';
   });
