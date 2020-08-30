@@ -42,20 +42,29 @@ const keys = [
   'age_limit_details',
 ];
 
+const removeUnusedKey = function (listKeys, list) {
+  listKeys.reduce((result, key) => {
+    if (!list[key]) delete list[key];
+    return result;
+  });
+};
+
 const makeKeysUnique = (list) => {
   const listKeys = Object.keys(list);
   keys.forEach((keyName) => {
     const key = listKeys.find((item) => item.includes(keyName));
-    if (key !== keyName) {
+    if (key !== keyName && list[key]) {
       list[keyName] = list[key];
       delete list[key];
     }
   });
+  removeUnusedKey(listKeys, list);
+  return list;
 };
 
 const convertIntoDate = (date) => {
   const dateInstance = moment(date, 'DD/MM/YYYY');
-  return dateInstance.isValid() ? dateInstance : date;
+  return dateInstance.isValid() ? dateInstance.valueOf() : date;
 };
 
 const createDateInstance = (list) => {
@@ -64,6 +73,7 @@ const createDateInstance = (list) => {
     if (key.includes('advt_no')) return;
     list.important_dates[key] = convertIntoDate(list.important_dates[key]);
   });
+  return list;
 };
 
 module.exports = {
