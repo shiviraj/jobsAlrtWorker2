@@ -34,7 +34,6 @@ const parseDetails = (list) => {
   for (let row in list) {
     const [head] = filterFromTree(list[row], findTag.bind(null, 'thead'));
     const [body] = filterFromTree(list[row], findTag.bind(null, 'tbody'));
-    console.log(JSON.stringify(head), '\n\n\n');
     const [tableHead] = getHeadRows(head);
     const tableBody = getRows(body);
     list[row] = { head: tableHead, body: tableBody };

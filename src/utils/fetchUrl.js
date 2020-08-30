@@ -1,6 +1,6 @@
 const https = require('https');
 
-const getData = (url) => {
+const get = (url) => {
   return new Promise((resolve) => {
     https
       .request(url, (res) => {
@@ -13,4 +13,4 @@ const getData = (url) => {
   });
 };
 
-module.exports = getData;
+module.exports = { get };
