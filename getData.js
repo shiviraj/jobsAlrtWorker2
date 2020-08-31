@@ -2,7 +2,7 @@ const https = require('https');
 const moment = require('moment');
 require('./src/db/connect.js');
 const fetchDetails = require('./src/fetchAllDetails');
-const { fetchJob, updateDB } = require('./src/fetchJob');
+const { fetchJob, updateDB, needToUpload } = require('./src/fetchJob');
 const { verifyAlrt, failureAlrt } = require('./src/alrt');
 
 const currentTime = () =>
@@ -23,6 +23,7 @@ const main = async () => {
     }
     setTimeout(main, 600000);
   } catch (e) {
+    await needToUpload(job);
     await failureAlrt(job);
     main();
   }

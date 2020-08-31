@@ -1,5 +1,6 @@
 const Queue = require('./model/queue');
 const Post = require('./model/post');
+const NeedToUpload = require('./model/needToUpload');
 const keys = require('./utils/keys');
 const { createDateInstance } = require('./utils/utils');
 
@@ -12,7 +13,7 @@ const fetchJob = async () => {
 
 const createUrl = (text) => {
   return text
-    .replace(/[\/\*\.\(\)]/g, '')
+    .replace(/[\/\*\.\(\)\&]/g, '')
     .replace(/ /g, '-')
     .toLowerCase();
 };
@@ -42,4 +43,9 @@ const updateDB = async (details, { url }) => {
   return await post.save();
 };
 
-module.exports = { fetchJob, updateDB };
+const needToUpload = async ({ url, name }) => {
+  const job = new NeedToUpload({ url, name });
+  await job.save();
+};
+
+module.exports = { fetchJob, updateDB, needToUpload };
