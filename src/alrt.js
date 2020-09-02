@@ -37,7 +37,7 @@ const verifyAlrt = async ({ source, title, url }) => {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `<${source}|Source> of the post \t\t <https://${url}.com/|Post>`,
+              text: `<${source}|Source> of the post \t\t <https://shivi-jobsalrt.herokuapp.com/post/${url}|Post>`,
             },
           },
         ],
