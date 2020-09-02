@@ -5,6 +5,7 @@ const PostSchema = new mongoose.Schema({
   how_to_apply: { type: Array },
   selection_process: { type: Array },
   important_dates: { type: Object },
+  important_links: { type: Object },
   application_fee: { type: Object },
   vacancy_details: { type: Object },
   age_limit_details: { type: Object },
