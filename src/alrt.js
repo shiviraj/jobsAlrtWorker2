@@ -18,7 +18,7 @@ const postRequest = (url, data) => {
   });
 };
 
-const verifyAlrt = async ({ source, title, url }) => {
+const verifyAlrt = async ({ source, title, _id }) => {
   const message = {
     blocks: [
       { type: 'section', text: { type: 'mrkdwn', text: `*${title}*` } },
@@ -37,7 +37,7 @@ const verifyAlrt = async ({ source, title, url }) => {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `<${source}|Source> of the post \t\t <https://shivi-jobsalrt.herokuapp.com/post/${url}|Post>`,
+              text: `<${source}|Source> of the post \t\t <https://shivi-jobsalrt.herokuapp.com/post/${_id}|Post>`,
             },
           },
         ],
