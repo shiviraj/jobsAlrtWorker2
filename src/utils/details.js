@@ -1,4 +1,5 @@
 const filterFromTree = require('./tree');
+const findExtra = require('./findExtra');
 const { getHeadRows, getRows, snakeCase, makeKeysUnique } = require('./utils');
 
 const findTag = (tag, item) => item.tag === tag;
@@ -81,10 +82,13 @@ const getDetails = (data) => {
   const list = tables.child.filter((item) => {
     return item.tag === 'div' || item.tag === 'h2';
   });
+
   const general = getGeneralDetails(list);
   const groupedDetails = groupDetails(list);
+
   const details = parseDetails(groupedDetails);
   const usefulDetails = modifyDetails(details);
+  findExtra(list, usefulDetails);
   return Object.assign(usefulDetails, { general });
 };
 

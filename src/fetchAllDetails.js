@@ -10,7 +10,8 @@ const fetchDetails = async function (url) {
   const links = getLinks(data);
   const title = getTitle(data);
   const details = getDetails(data);
-  return Object.assign({ important_links: links, title }, details);
+  Object.assign(details.important_links, links);
+  return Object.assign({ title }, details);
 };
 
 module.exports = fetchDetails;

@@ -1,0 +1,37 @@
+const findExtra = require('../src/utils/findExtra');
+
+const json = [
+  {
+    node: 'element',
+    tag: 'div',
+    attr: { id: 'rslt_slbs_sction' },
+    child: [
+      {
+        node: 'element',
+        tag: 'div',
+        child: [
+          {
+            node: 'element',
+            tag: 'ul',
+            child: [
+              {
+                node: 'element',
+                tag: 'a',
+                attr: { href: 'https://www.example.com/', target: '_blank' },
+                child: [{ node: 'text', text: 'HSSC Group D Result' }],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+describe('Links', () => {
+  test('Should returns the link from given data of html in json', () => {
+    expect(findExtra(json, {})).toStrictEqual({
+      important_links: { hssc_group_d_result: 'https://www.example.com/' },
+    });
+  });
+});
