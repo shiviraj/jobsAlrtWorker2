@@ -13,7 +13,7 @@ describe('Get Details', () => {
   test('Should return the post details', () => {
     expect(getDetails(json)).toStrictEqual({
       important_links: {},
-      status: [],
+      state: [],
       age_limit_details: {
         body: [
           ['Minimum', '21 Years'],

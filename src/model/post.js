@@ -16,6 +16,7 @@ const PostSchema = new mongoose.Schema({
   url: { type: String, required: true, trim: true },
   source: { type: String, required: true, trim: true },
   status: { type: String, required: true, default: 'drafted' },
+  state: { type: Array },
   others: { type: Object },
 });
 

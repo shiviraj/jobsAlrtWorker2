@@ -41,14 +41,14 @@ describe('Links', () => {
   test('Should returns the link from given data of html in json', () => {
     expect(findExtra(json, {})).toStrictEqual({
       important_links: { hssc_group_d_result: 'https://www.example.com/' },
-      status: [],
+      state: [],
     });
   });
 
-  test('Should returns the status from given post', () => {
+  test('Should returns the state from given post', () => {
     expect(findExtra(json2, {})).toStrictEqual({
       important_links: {},
-      status: ['result'],
+      state: ['result'],
     });
   });
 });

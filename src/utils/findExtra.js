@@ -32,10 +32,10 @@ const getStatus = (list) => {
 
 const findExtra = (list, post) => {
   const data = list.find(findById);
-  const status = getStatus(list);
+  const state = getStatus(list);
   let important_links = {};
   if (data) important_links = createLinks(data);
-  return Object.assign(post, { important_links, status });
+  return Object.assign(post, { important_links, state });
 };
 
 module.exports = findExtra;
