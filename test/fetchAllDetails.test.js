@@ -14,6 +14,7 @@ describe('Fetch All Details', () => {
   test('Should fetch all details of post', (done) => {
     fetchAllDetails('url').then((result) => {
       expect(result).toStrictEqual({
+        status: [],
         age_limit_details: {
           body: [
             ['Minimum', '21 Years'],

@@ -28,10 +28,27 @@ const json = [
   },
 ];
 
+const json2 = [
+  {
+    node: 'element',
+    tag: 'a',
+    attr: { href: '#rslt_slbs_sction' },
+    child: [{ node: 'text', text: 'Check Result' }],
+  },
+];
+
 describe('Links', () => {
   test('Should returns the link from given data of html in json', () => {
     expect(findExtra(json, {})).toStrictEqual({
       important_links: { hssc_group_d_result: 'https://www.example.com/' },
+      status: [],
+    });
+  });
+
+  test('Should returns the status from given post', () => {
+    expect(findExtra(json2, {})).toStrictEqual({
+      important_links: {},
+      status: ['result'],
     });
   });
 });
