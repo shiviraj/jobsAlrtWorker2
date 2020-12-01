@@ -1,5 +1,5 @@
 const express = require('express');
-require('./getData');
+require('./main');
 
 const app = express();
 
@@ -8,3 +8,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(process.env.PORT);
+
+main();

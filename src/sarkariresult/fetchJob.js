@@ -1,12 +1,12 @@
-const Queue = require('./model/queue');
-const Post = require('./model/post');
-const NeedToUpload = require('./model/needToUpload');
+const Queue = require('../model/queue');
+const Post = require('../model/post');
+const NeedToUpload = require('../model/needToUpload');
 const keys = require('./utils/keys');
 const { createDateInstance } = require('./utils/utils');
 
 const fetchJob = async () => {
   const queue = await Queue.findOne({});
-  const job = queue.list.pop();
+  const job = queue.list1.pop();
   await queue.save();
   return job;
 };

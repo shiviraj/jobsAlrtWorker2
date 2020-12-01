@@ -2,11 +2,11 @@
   "name": "workers2",
   "version": "1.0.0",
   "description": "",
-  "main": "getData.js",
+  "main": "getData1.js",
   "scripts": {
     "test": "jest --runInBand --detectOpenHandles --coverage --forceExit",
     "start": "node server.js",
-    "dev": "env-cmd -f ./config/dev.env node --trace-warnings getData.js"
+    "dev": "env-cmd -f ./config/dev.env node --trace-warnings main.js"
   },
   "jest": {
     "testEnvironment": "node",
