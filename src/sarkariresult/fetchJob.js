@@ -2,7 +2,6 @@ const Queue = require('../model/queue');
 const Post = require('../model/post');
 const NeedToUpload = require('../model/needToUpload');
 const keys = require('./utils/keys');
-const { createDateInstance } = require('./utils/utils');
 
 const fetchJob = async () => {
   const queue = await Queue.findOne({});
@@ -21,14 +20,15 @@ const createUrl = (text) => {
 const recreateObject = (postDetails) => {
   postDetails.others || (postDetails.others = {});
   Object.keys(postDetails).forEach((key) => {
-    if (!keys.includes(key)) postDetails.others[key] = postDetails[key];
+    if (!keys.includes(key)) {
+      postDetails.others[key] = postDetails[key];
+    }
   });
 };
 
 const updateDB = async (details, { url }) => {
   Object.assign(details, { source: url });
   recreateObject(details);
-  createDateInstance(details);
 
   const savedJob = await Post.findOne({ source: url });
   if (savedJob) {

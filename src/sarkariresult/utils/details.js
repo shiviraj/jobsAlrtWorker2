@@ -90,19 +90,6 @@ const findHowToApply = (data) => {
   return { how_to_apply: result };
 };
 
-const makeGroups = (tables) => {
-  const groups = [];
-  for (let i = 0; i < tables.length; i += 2) {
-    groups.push([tables[i], tables[i + 1]]);
-  }
-  return groups;
-};
-
-const findTableTitle = function (tableTitle) {
-  const [titleNode] = filterFromTree(tableTitle, findTag.bind(null, 'h3'));
-  return removeSpace(titleNode.child[0].text);
-};
-
 const findTableHeader = function (table) {
   const [tableHead] = filterFromTree(table, findTag.bind(null, 'thead'));
   const tableHeadRow = filterFromTree(tableHead, findTag.bind(null, 'th'));
@@ -128,14 +115,10 @@ const findTableBody = function (table) {
 
 const findOtherDetails = (data) => {
   const tables = filterFromTree(data, findTag.bind(null, 'table'));
-  const groups = makeGroups(tables);
-
-  return groups.reduce((context, group) => {
-    const [tableTitle, table] = group;
-    const title = findTableTitle(tableTitle);
+  return tables.reduce((context, table, index) => {
     const head = findTableHeader(table);
     const body = findTableBody(table);
-    context[snakeCase(title)] = { head, body };
+    context[snakeCase(`title_${index}`)] = { head, body };
     return context;
   }, {});
 };

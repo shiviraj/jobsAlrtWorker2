@@ -17,7 +17,7 @@ const fetchDetails = async function (url) {
   const how_to_apply = findHowToApply(data);
   const otherDetails = findOtherDetails(data);
   Object.assign(details.others, otherDetails);
-  return Object.assign({ title }, details, how_to_apply, { important_links });
+  return Object.assign(details, how_to_apply, { important_links, title });
 };
 
 module.exports = fetchDetails;
