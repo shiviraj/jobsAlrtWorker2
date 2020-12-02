@@ -10,7 +10,7 @@ const { verifyAlrt, failureAlrt } = require('./sarkariresult/alrt');
 const currentTime = () =>
   moment().utcOffset('+05:30').format('MMM DD, YYYY hh:mm:ss A');
 
-const sarkariResult = async () => {
+const sarkariResult = async (main) => {
   const job = await fetchJob();
   console.log(job || 'Sarkari Result, No job pending...', currentTime(), '\n');
   try {
@@ -19,10 +19,12 @@ const sarkariResult = async () => {
       const newJob = await updateDB(details, job);
       await verifyAlrt(newJob);
       console.log('updated\n\t', currentTime());
+      main();
     }
   } catch (e) {
     await needToUpload(job);
     await failureAlrt(job);
+    main();
   }
 };
 

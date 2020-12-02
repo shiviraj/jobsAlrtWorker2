@@ -21,7 +21,13 @@ const createUrl = (text) => {
 const recreateObject = (postDetails) => {
   postDetails.others || (postDetails.others = {});
   Object.keys(postDetails).forEach((key) => {
-    if (!keys.includes(key)) postDetails.others[key] = postDetails[key];
+    if (!keys.includes(key)) {
+      if (key === 'age_limit') {
+        postDetails.age_limit_details = postDetails[key];
+      } else {
+        postDetails.others[key] = postDetails[key];
+      }
+    }
   });
 };
 

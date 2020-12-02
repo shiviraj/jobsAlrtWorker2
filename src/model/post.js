@@ -1,7 +1,16 @@
 const mongoose = require('mongoose');
 
+const defaultGeneral = {
+  form_type: 'Online',
+  last_date: 0,
+  total_vacancies: '',
+  company: '',
+  location: '',
+  qualification_required: '',
+};
+
 const PostSchema = new mongoose.Schema({
-  general: { type: Object, required: true },
+  general: { type: Object, required: true, default: defaultGeneral },
   how_to_apply: { type: Array },
   selection_process: { type: Array },
   important_dates: { type: Object },
@@ -15,7 +24,6 @@ const PostSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   url: { type: String, required: true, trim: true },
   source: { type: String, required: true, trim: true },
-  status: { type: String, required: true, default: 'drafted' },
   state: { type: Array },
   others: { type: Object },
 });
