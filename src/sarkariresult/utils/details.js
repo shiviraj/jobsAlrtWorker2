@@ -114,7 +114,8 @@ const findTableBody = function (table) {
 };
 
 const findOtherDetails = (data) => {
-  const tables = filterFromTree(data, findTag.bind(null, 'table'));
+  const [, ...tables] = filterFromTree(data, findTag.bind(null, 'table'));
+
   return tables.reduce((context, table, index) => {
     const head = findTableHeader(table);
     const body = findTableBody(table);
