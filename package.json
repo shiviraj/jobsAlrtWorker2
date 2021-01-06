@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/shiviraj/jobsAlrtWorker2#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "html2json": "^1.0.2",
     "moment": "^2.27.0",

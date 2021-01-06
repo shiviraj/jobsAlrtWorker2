@@ -1,16 +1,5 @@
-const https = require('https');
+const axios = require('axios');
 
-const get = (url) => {
-  return new Promise((resolve) => {
-    https
-      .request(url, (res) => {
-        res.setEncoding('utf8');
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () => resolve(data));
-      })
-      .end();
-  });
-};
+const get = async (url) => await axios.get(url);
 
 module.exports = { get };

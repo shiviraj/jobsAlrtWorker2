@@ -6,7 +6,7 @@ const sarkariResult = require('./src/sarkariresult');
 const wakeAnotherWorker = (url) => https.request(url).end();
 
 const main = async () => {
-  await jobsarkari(main);
+  // await jobsarkari(main);
   await sarkariResult(main);
 };
 

@@ -1,7 +1,8 @@
 const moment = require('moment');
 const { json2html } = require('html2json');
 
-const removeComments = (html) => html.replace(/<!--.*?-->/g, '');
+const removeComments = (html) =>
+  html.replace(/<!--.*?-->/g, '').replace(/<Style(.*?)<\/style>/gs, '');
 
 const snakeCase = (text) =>
   text.trim().replace(/ /g, '_').replace(/\./g, '').toLowerCase();
