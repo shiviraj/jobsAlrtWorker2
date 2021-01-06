@@ -6,8 +6,8 @@ const sarkariResult = require('./src/sarkariresult');
 const wakeAnotherWorker = (url) => https.request(url).end();
 
 const main = async () => {
-  // await jobsarkari(main);
-  await sarkariResult(main);
+  await jobsarkari(main);
+  // await sarkariResult(main);
 };
 
 setInterval(() => wakeAnotherWorker(process.env.ANOTHER_WORKER), 300000);
