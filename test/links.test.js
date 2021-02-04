@@ -1,4 +1,4 @@
-const getLink = require('../src/utils/links');
+const getLink = require('../src/jobsarkari/utils/links');
 const html = require('./fixture/json');
 
 describe('Links', () => {

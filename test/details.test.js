@@ -1,4 +1,4 @@
-const { getDetails, getTitle } = require('../src/utils/details');
+const { getDetails, getTitle } = require('../src/jobsarkari/utils/details');
 const json = require('./fixture/json');
 
 describe('Get Title', () => {

@@ -1,8 +1,8 @@
 const moment = require('moment');
 
 const fetchDetails = require('./jobsarkari/fetchAllDetails');
-const { fetchJob, updateDB, needToUpload } = require('./jobsarkari/fetchJob');
-const { verifyAlrt, failureAlrt } = require('./jobsarkari/alrt');
+const {fetchJob, updateDB, needToUpload} = require('./jobsarkari/fetchJob');
+const {verifyAlrt, failureAlrt} = require('./jobsarkari/alrt');
 
 const currentTime = () =>
   moment().utcOffset('+05:30').format('MMM DD, YYYY hh:mm:ss A');

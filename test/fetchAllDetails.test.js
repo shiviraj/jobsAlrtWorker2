@@ -1,12 +1,12 @@
 const sinon = require('sinon');
-const fetch = require('../src/utils/fetchUrl');
-const fetchAllDetails = require('../src/fetchAllDetails');
+const fetch = require('../src/jobsarkari/utils/fetchUrl');
+const fetchAllDetails = require('../src/jobsarkari/fetchAllDetails');
 const html = require('./fixture/html');
 
 describe('Fetch All Details', () => {
   beforeEach(() => {
     const get = sinon.stub(fetch, 'get');
-    get.withArgs('url').resolves(html);
+    get.withArgs('url').resolves({data: html});
   });
 
   afterEach(() => sinon.restore());

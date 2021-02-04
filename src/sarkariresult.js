@@ -11,19 +11,26 @@ const currentTime = () =>
   moment().utcOffset('+05:30').format('MMM DD, YYYY hh:mm:ss A');
 
 const sarkariResult = async (main) => {
-  const job = await fetchJob();
+  // const job = await fetchJob();
+
+  const job = {
+    url: 'https://sarkariresults.info/2021/rajasthan-hc-district-judge.php',
+    name: 'jobs',
+  };
+
   console.log(job || 'Sarkari Result, No job pending...', currentTime(), '\n');
   try {
     if (job) {
       const details = await fetchDetails(job.url);
-      const newJob = await updateDB(details, job);
-      await verifyAlrt(newJob);
+      // const newJob = await updateDB(details, job);
+      // await verifyAlrt(newJob);
       console.log('updated\n\t', currentTime());
       main();
     }
   } catch (e) {
-    await needToUpload(job);
-    await failureAlrt(job);
+    console.log('error');
+    // await needToUpload(job);
+    // await failureAlrt(job);
     main();
   }
 };

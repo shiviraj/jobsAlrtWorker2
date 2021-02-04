@@ -1,4 +1,4 @@
-const findExtra = require('../src/utils/findExtra');
+const findExtra = require('../src/jobsarkari/utils/findExtra');
 
 const json = [
   {

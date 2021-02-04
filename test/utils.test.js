@@ -5,7 +5,7 @@ const {
   getHeadRows,
   makeKeysUnique,
   createDateInstance,
-} = require('../src/utils/utils');
+} = require('../src/jobsarkari/utils/utils');
 
 describe('Utils', () => {
   test('Should remove the comments from html text', () => {

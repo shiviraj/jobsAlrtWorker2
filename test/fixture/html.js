@@ -185,5 +185,4 @@ document.addEventListener('DOMContentLoaded',function(){jQuery('.dattatable').st
 <input type="text" readonly="readonly" value="https://www.jobsarkari.com/recruitment/nhb-assistant-manager-s/" class="ss-copy-action-field" aria-label="Copy" />
 <a href="#" class="ss-button" rel="nofollow noopener">Copy<span class="ss-share-network-tooltip">Copied</span></a>
 </div></div></div></div></body></html>
-
 `;

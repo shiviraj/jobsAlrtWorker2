@@ -1,4 +1,4 @@
-const findFromTree = require('../src/utils/tree');
+const findFromTree = require('../src/jobsarkari/utils/tree');
 const json = require('./fixture/json');
 
 describe('Find From Tree', () => {

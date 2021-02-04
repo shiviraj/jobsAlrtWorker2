@@ -1,6 +1,8 @@
 const moment = require('moment');
 
-const removeComments = (html) => html.replace(/<!--.*?-->/g, '');
+const removeComments = (html) =>
+  html.replace(/<!--(.*?)-->/gs, '').match(/<body>(.*?)<\/body>/gs)[0];
+
 const removeSpace = (text) => {
   return text
     .split(' ')
